@@ -1,0 +1,311 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    --main-color: rgb(73, 73, 73);
+    box-sizing: border-box;
+}
+
+/* LAYOUT */
+
+body {
+    font-family: 'consolas';
+    color: var(--main-color);
+    display: grid;
+    grid-template-columns: 12em 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar content";
+    height: 100vh;
+}
+
+/* HEADER */
+
+header {
+    padding: 10px 20px;
+    grid-area: header;
+    background-color: bisque;
+
+    display: grid;
+    grid-template-columns: 60% 1fr min(200px, auto);
+    grid-template-rows: auto auto;
+}
+
+#search {
+    display: grid;
+    grid-template-columns: auto 90%;
+    align-items: center;
+}
+
+#search-svg {
+    align-self: center;
+    justify-self: center;
+    width: 3em;
+    height: 3em;
+    padding: .5em;
+}
+
+#searchbar {
+    background-color: rgb(175, 175, 175);
+    border-radius: 1em;
+    width: 90%;
+    height: 1.6em;
+}
+
+#profile-info {
+    grid-column: 3 / 4;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+}
+
+#bell-svg {
+    align-self: center;
+    justify-self: center;
+    width: 3em;
+    height: 3em;
+    padding: .5em .5em;
+    margin: 0px 1em;
+}
+
+#pfp {
+    width: 2em;
+    height: 2em;
+    background-color: rgb(175, 175, 175);
+    border-radius: 1em;
+    margin: .5em;
+    margin: 0px 1em;
+}
+
+#profile-name {
+    font-size: 1em;
+    padding: 1em 1em;
+}
+
+#greeting {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+}
+
+#greeting > h2 {
+    font-size: 1.2em;
+    /* position: relative;
+    top: 12px; */
+}
+
+#greeting > h1 {
+    font-size: 1.8em;
+    grid-row: 2;
+    grid-column: 2;
+    margin: -1em 0em;
+}
+
+#pfp2 {
+    grid-row: 1 / 3;
+    align-self: center;
+    width: 3em;
+    height: 3em;
+    background-color: rgb(175, 175, 175);
+    border-radius: calc(3em/2);
+}
+
+#content-buttons {
+    padding: 0px 0px 0px 5%;
+    grid-column: 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 0em 1em;
+}
+
+button {
+    font-family: 'consolas';
+    font-weight: 1000;
+    font-size: 1em;
+    background-color: cornsilk;
+    width: 6em;
+    height: 1.8em;
+    border-radius: calc(3em/2);
+    border: 2px rgb(39, 39, 39) solid;
+    color: rgb(39, 39, 39);
+}
+
+/* SIDEBAR */
+
+aside {
+    max-width: 100%;
+    padding: 10px 10px;
+    grid-area: sidebar;
+    background-color: cornsilk;
+
+    display: grid;
+    grid-template-rows: repeat(3, auto) 1fr;
+    align-items: center;
+}
+
+[id^="dash-grp"] {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin: 0px 0px 5vh 0px;
+}
+
+#dash-grp-1 > h1 {
+    font-size: 1.6em;
+    padding: 0px 0px 0px .1em;
+    text-wrap: break-word;
+    overflow-wrap: break-word; /* modern */
+    white-space: normal;       /* disable nowrap if applied */
+}
+
+#dash-grp-1 > embed {
+    align-self: center;
+    justify-self: center;
+    width: 2.4em;
+    height: 2.4em;
+    padding: 0px;
+}
+
+#dash-grp-2 > h2, #dash-grp-3 > h2 {
+    padding: 0px 0px 0px .1em;
+    font-size: 1.3em;
+    align-self: center;
+}
+
+#dash-grp-2 > embed, #dash-grp-3 > embed {
+    align-self: center;
+    justify-self: center;
+    width: 3em;
+    height: 3em;
+    padding: .4em;
+}
+
+/* CONTENT */
+
+main {
+    padding: 30px 30px;
+    grid-area: content;
+    background-color: gainsboro;
+
+    display: grid;
+    grid-template-columns: 75% 1fr;
+    grid-template-rows: auto auto 1fr;
+    gap: 2em 0em;
+    grid-template-areas:
+        "projects announcements"
+        "projects trending";
+}
+
+#projects {
+    grid-area: projects;
+    display: grid;
+    background-color: snow;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: auto repeat(auto-fill, auto) 1fr;
+    gap: 2em 1em;
+    align-items: start;
+    /* grid-auto-rows: auto; */
+}
+#projects > h1 {
+    font-size: 1.4em;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+}
+#projects > div {
+    background-color: cornsilk;
+    color: rgb(56, 56, 56);
+    border-radius: 10px;
+    border: 2px dashed rgb(116, 116, 116);
+    padding: 2em;
+    /* width: 200px; */
+    /* min-width: 200px;
+    max-width: 300px; */
+
+    display: flex;
+    flex-direction: column;
+
+}
+[id^="project-item"] > h1 {
+    font-size: 1.2em;
+}
+[id^="project-item"] > div {
+    align-self: flex-end;
+}
+#projects p {
+    color: rgb(97, 97, 97);
+}
+
+.content-icon {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+#announcements {
+    grid-area: announcements;
+    background-color: snow;
+    border-radius: 10px;
+    margin: 1em 0em 1em 1em;
+    padding: 1em;
+}
+[id^="announcement-item"] {
+    margin: 1em .2em;
+}
+#announcements > h1{
+    font-size: 1.4em;
+    margin: 0px 0px 1em 0px;
+}
+#announcements h2{
+    font-size: 1.1em;
+}
+#announcements p {
+    color: rgb(116, 116, 116);
+    font-size: .8em;
+}
+#announcements hr {
+    height: 0px;
+    margin: .5em 1em;
+    border-color: rgb(116, 116, 116);
+    color: rgb(116, 116, 116);
+    /* border: 1px; */
+}
+
+#trending {
+    grid-area: trending;
+    background-color: snow;
+    border-radius: 10px;
+    margin: 1em 0em 1em 1em;
+    padding: 1em;
+}
+[id^="trending-item"] {
+    display: grid;
+    margin: 2em 0px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    align-items: center;
+    grid-template-areas: 
+        "pfp handle"
+        "pfp status"
+}
+#trending > div > div{
+    grid-area: pfp;
+}
+#trending h1 {
+    font-size: 1.4em;
+    margin: 0px 0px 1em 0px;
+}
+#trending h2 {
+    grid-area: handle;
+    font-size: 1.2em;
+}
+#trending h3 {
+    grid-area: status;
+    color: rgb(116, 116, 116);
+    font-size: .8em;
+}
